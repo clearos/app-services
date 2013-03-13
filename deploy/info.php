@@ -7,8 +7,8 @@
 $app['basename'] = 'services';
 $app['version'] = '1.1.1';
 $app['release'] = '1';
-$app['vendor'] = 'ClearFoundation';
-$app['packager'] = 'ClearFoundation';
+$app['vendor'] = 'Tim Burgess';
+$app['packager'] = 'Tim Burgess';
 $app['license'] = 'GPLv3';
 $app['license_core'] = 'GPLv3';
 $app['description'] = lang('services_app_description');
@@ -21,6 +21,12 @@ $app['name'] = lang('services_app_name');
 $app['category'] = lang('base_category_system');
 $app['subcategory'] = lang('base_subcategory_operating_system');
 $app['menu_enabled'] = TRUE;
+
+/////////////////////////////////////////////////////////////////////////////
+// Controllers
+/////////////////////////////////////////////////////////////////////////////
+
+$app['controllers']['services']['title'] = lang('services_app_name');
 
 /////////////////////////////////////////////////////////////////////////////
 // Packaging
