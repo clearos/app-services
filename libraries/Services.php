@@ -60,6 +60,12 @@ clearos_load_library('base/Daemon');
 clearos_load_library('base/Engine');
 clearos_load_library('base/Folder');
 
+use \Exception as Exception;
+use \clearos\apps\base\Engine_Exception as Engine_Exception;
+
+clearos_load_library('base/Engine_Exception');
+
+
 ///////////////////////////////////////////////////////////////////////////////
 // C L A S S
 ///////////////////////////////////////////////////////////////////////////////
@@ -153,11 +159,15 @@ class Services extends Engine
 
         foreach ($this->get_services() as $daemon => $details) {
             $daemon_name = $details['name'];
-            $daemon = new Daemon($daemon_name);
+            try {
+                $daemon = new Daemon($daemon_name);
 
-            $services_info[$daemon_name]['description'] = $daemon->get_title(); //details['title'];
-            $services_info[$daemon_name]['running_state'] = $daemon->get_running_state();
-            $services_info[$daemon_name]['boot_state'] = $daemon->get_boot_state();
+                $services_info[$daemon_name]['description'] = $daemon->get_title(); //details['title'];
+                $services_info[$daemon_name]['running_state'] = $daemon->get_running_state();
+                $services_info[$daemon_name]['boot_state'] = $daemon->get_boot_state();
+            } catch (\Exception $e) {
+                continue;
+            }
         }
 
         return $services_info;
