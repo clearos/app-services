@@ -3,9 +3,9 @@
 /**
  * Services summary view.
  *
- * @category   ClearOS
- * @package    Services
- * @subpackage Views
+ * @category   apps
+ * @package    services
+ * @subpackage views
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2013 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
