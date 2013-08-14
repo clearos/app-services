@@ -59,7 +59,7 @@ $anchors = array();
 
 foreach ($services as $service => $details) {
     if ($details['running_state']) {
-        $status = '<span style="color: green">Running<span>';
+        $status = '<span style="color: green">Running</span>';
         $action = '/app/services/stop/' . $service;
         $anchor = anchor_custom($action, lang('base_stop'));
     } else {
@@ -68,7 +68,7 @@ foreach ($services as $service => $details) {
         $anchor = anchor_custom($action, lang('base_start'));
     }
     if ($details['boot_state']) {
-        $bootstatus = '<span style="color: green">Enabled<span>';
+        $bootstatus = '<span style="color: green">Enabled</span>';
         $action = '/app/services/boot_stop/' . $service;
         $bootanchor = anchor_custom($action, lang('base_disable'));
     } else {
