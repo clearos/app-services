@@ -95,7 +95,8 @@ foreach ($services as $service => $details) {
 // Summary table
 ///////////////////////////////////////////////////////////////////////////////
 
-$options['default_rows'] = '50';
+$options['default_rows'] = 1000;
+$options['paginate'] = FALSE;
 
 echo summary_table(
     lang('services_services'),
