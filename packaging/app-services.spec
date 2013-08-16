@@ -1,7 +1,7 @@
 
 Name: app-services
 Epoch: 1
-Version: 1.1.1
+Version: 1.4.70
 Release: 1%{dist}
 Summary: Services Manager
 License: GPLv3
@@ -35,11 +35,6 @@ This package provides the core API and libraries.
 mkdir -p -m 755 %{buildroot}/usr/clearos/apps/services
 cp -r * %{buildroot}/usr/clearos/apps/services/
 
-
-if [ -d %{buildroot}/usr/clearos/apps/services/libraries_zendguard ]; then
-    rm -rf %{buildroot}/usr/clearos/apps/services/libraries
-    mv %{buildroot}/usr/clearos/apps/services/libraries_zendguard %{buildroot}/usr/clearos/apps/services/libraries
-fi
 
 %post
 logger -p local6.notice -t installer 'app-services - installing'
