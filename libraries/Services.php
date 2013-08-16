@@ -162,6 +162,9 @@ class Services extends Engine
             try {
                 $daemon = new Daemon($daemon_name);
 
+                if (! $daemon->is_installed())
+                    continue;
+
                 $services_info[$daemon_name]['description'] = $daemon->get_title(); //details['title'];
                 $services_info[$daemon_name]['running_state'] = $daemon->get_running_state();
                 $services_info[$daemon_name]['boot_state'] = $daemon->get_boot_state();
