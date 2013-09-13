@@ -43,7 +43,6 @@ $this->lang->load('base');
 $headers = array(
     lang('services_description'),
     lang('services_service'),
-    lang('base_status'),
     lang('services_boot_status')
 );
 
@@ -58,33 +57,30 @@ $anchors = array();
 ///////////////////////////////////////////////////////////////////////////////
 
 foreach ($services as $service => $details) {
+    $action = '/app/services/start_toggle/' . $service;
     if ($details['running_state']) {
-        $status = '<span style="color: green">Running</span>';
-        $action = '/app/services/stop/' . $service;
-        $anchor = anchor_custom($action, lang('base_stop'));
+        $anchor = anchor_custom($action, lang('base_stop'), 'important', array('id' => 'enable-' + $service));
     } else {
-        $status = '<span style="color: red">Stopped</span>';
-        $action = '/app/services/start/' . $service;
-        $anchor = anchor_custom($action, lang('base_start'));
+        $anchor = anchor_custom($action, lang('base_start'), 'important', array('id' => 'enable-' + $service));
     }
+    $action = '/app/services/boot_toggle/' . $service;
     if ($details['boot_state']) {
-        $bootstatus = '<span style="color: green">Enabled</span>';
-        $action = '/app/services/boot_stop/' . $service;
+        $bootstatus = '<i class="icon-ok"></i>';
         $bootanchor = anchor_custom($action, lang('base_disable'));
     } else {
-        $bootstatus = '<span style="color: red">Disabled</span>';
-        $action = '/app/services/boot_start/' . $service;
+        $bootstatus = '';
         $bootanchor = anchor_custom($action, lang('base_enable'));
     }
     $buttons = button_set(array($anchor, $bootanchor));
 
     $item['title'] = $service;
+    $item['row_id'] = $service;
+    $item['current_state'] = (bool)$details['running_state'];
     $item['action'] = $action;
     $item['anchors'] = $buttons;
     $item['details'] = array(
         $details['description'],
         $service,
-        $status,
         $bootstatus
     );
 
@@ -95,8 +91,13 @@ foreach ($services as $service => $details) {
 // Summary table
 ///////////////////////////////////////////////////////////////////////////////
 
-$options['default_rows'] = 1000;
-$options['paginate'] = FALSE;
+$options = array (
+    'id' => 'server_services',
+    'default_rows' => 1000,
+    'paginate' => FALSE,
+    'sort-default-col' => 1,
+    'row-enable-disable' => TRUE
+);
 
 echo summary_table(
     lang('services_services'),

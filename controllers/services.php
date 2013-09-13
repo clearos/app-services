@@ -56,6 +56,8 @@ class Services extends ClearOS_Controller
 
     function index()
     {
+        clearos_profile(__METHOD__, __LINE__);
+
         // Load dependencies
         //------------------
 
@@ -64,8 +66,6 @@ class Services extends ClearOS_Controller
 
         // Load view data
         //---------------
-
-        $options['type'] = 'wide_configuration';
 
         try {
             $data['services'] = $this->services->get_services_info();
@@ -77,7 +77,63 @@ class Services extends ClearOS_Controller
         // Load views
         //-----------
 
-        $this->page->view_form('services/services', $data, lang('services_services'), $options);
+        $this->page->view_form('services/services', $data, lang('services_services'));
+    }
+
+    /**
+     * Daemon start/stop toggle.
+     *
+     * @return JSON
+     */
+
+    function start_toggle()
+    {
+        clearos_profile(__METHOD__, __LINE__);
+
+        header('Cache-Control: no-cache, must-revalidate');
+        header('Content-type: application/json');
+
+        $daemon = $this->input->post('service');
+
+        $this->load->library('base/Daemon', $daemon);
+
+        try {
+            $state = $this->daemon->get_running_state();
+            $this->daemon->set_running_state(!$state);
+            echo json_encode(Array('code' => 0, 'running_state' => !$state));
+        } catch (Exception $e) {
+            echo json_encode(Array('code' => clearos_exception_code($e), 'errmsg' => clearos_exception_message($e)));
+            return;
+        }
+    }
+
+    /**
+     * Daemon on boot toggle.
+     *
+     * @return JSON
+     */
+
+    function boot_toggle()
+    {
+        clearos_profile(__METHOD__, __LINE__);
+
+        header('Cache-Control: no-cache, must-revalidate');
+        header('Content-type: application/json');
+
+        $daemon = $this->input->post('service');
+
+        $this->load->library('base/Daemon', $daemon);
+
+        try {
+            $state = $this->daemon->get_boot_state();
+        clearos_profile(__METHOD__, __LINE__, 'TODO Service ' . $daemon . ' current boot state is ' . ($state ? 'on' : 'off'));
+            $this->daemon->set_boot_state(!$state);
+            echo json_encode(Array('code' => 0, 'boot_state' => !$state));
+        clearos_profile(__METHOD__, __LINE__, 'TODO Service ' . $daemon . ' new boot state is ' . (!$state ? 'on' : 'off'));
+        } catch (Exception $e) {
+            echo json_encode(Array('code' => clearos_exception_code($e), 'errmsg' => clearos_exception_message($e)));
+            return;
+        }
     }
 
     /**
@@ -88,6 +144,8 @@ class Services extends ClearOS_Controller
 
     function start($daemon)
     {
+        clearos_profile(__METHOD__, __LINE__);
+
         $this->load->library('base/Daemon', $daemon);
 
         try {
@@ -107,6 +165,8 @@ class Services extends ClearOS_Controller
 
     function stop($daemon)
     {
+        clearos_profile(__METHOD__, __LINE__);
+
         $this->load->library('base/Daemon', $daemon);
 
         try {
@@ -126,6 +186,7 @@ class Services extends ClearOS_Controller
 
     function boot_start($daemon)
     {
+        clearos_profile(__METHOD__, __LINE__);
         $this->load->library('base/Daemon', $daemon);
 
         try {
@@ -145,6 +206,7 @@ class Services extends ClearOS_Controller
 
     function boot_stop($daemon)
     {
+        clearos_profile(__METHOD__, __LINE__);
         $this->load->library('base/Daemon', $daemon);
 
         try {
@@ -156,4 +218,37 @@ class Services extends ClearOS_Controller
         }
     }
 
+    /**
+     * Ajax daemon status response.
+     *
+     * @return JSON
+     */
+
+    function status()
+    {
+        clearos_profile(__METHOD__, __LINE__);
+
+        header('Cache-Control: no-cache, must-revalidate');
+        header('Content-type: application/json');
+
+        // Load dependencies
+        //------------------
+
+        $this->load->library('services/Services');
+
+        // Load view data
+        //---------------
+
+        try {
+            $services = $this->services->get_services_info();
+            echo json_encode(   
+                array(
+                    'code' => 0,
+                    'services' => $services
+                )
+            );
+        } catch (Exception $e) {
+            echo json_encode(Array('code' => clearos_exception_code($e), 'errmsg' => clearos_exception_message($e)));
+        }
+    }
 }
