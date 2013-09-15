@@ -100,7 +100,7 @@ class Services extends ClearOS_Controller
         try {
             $state = $this->daemon->get_running_state();
             $this->daemon->set_running_state(!$state);
-            echo json_encode(Array('code' => 0, 'running_state' => !$state));
+            echo json_encode(Array('code' => 0, 'running_state' => $this->daemon->get_running_state()));
         } catch (Exception $e) {
             echo json_encode(Array('code' => clearos_exception_code($e), 'errmsg' => clearos_exception_message($e)));
             return;
@@ -126,10 +126,8 @@ class Services extends ClearOS_Controller
 
         try {
             $state = $this->daemon->get_boot_state();
-        clearos_profile(__METHOD__, __LINE__, 'TODO Service ' . $daemon . ' current boot state is ' . ($state ? 'on' : 'off'));
             $this->daemon->set_boot_state(!$state);
-            echo json_encode(Array('code' => 0, 'boot_state' => !$state));
-        clearos_profile(__METHOD__, __LINE__, 'TODO Service ' . $daemon . ' new boot state is ' . (!$state ? 'on' : 'off'));
+            echo json_encode(Array('code' => 0, 'boot_state' => $this->daemon->get_boot_state()));
         } catch (Exception $e) {
             echo json_encode(Array('code' => clearos_exception_code($e), 'errmsg' => clearos_exception_message($e)));
             return;
