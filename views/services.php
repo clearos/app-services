@@ -65,7 +65,7 @@ foreach ($services as $service => $details) {
     }
     $action = '/app/services/boot_toggle/' . $service;
     if ($details['boot_state']) {
-        $bootstatus = '<i class="icon-ok"></i>';
+        $bootstatus = '<i class="fa fa-check"></i>';
         $bootanchor = anchor_custom($action, lang('base_disable'));
     } else {
         $bootstatus = '';

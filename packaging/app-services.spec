@@ -1,7 +1,7 @@
 
 Name: app-services
 Epoch: 1
-Version: 1.5.2
+Version: 1.5.15
 Release: 1%{dist}
 Summary: Services Manager
 License: GPLv3
@@ -72,7 +72,6 @@ exit 0
 %files core
 %defattr(-,root,root)
 %exclude /usr/clearos/apps/services/packaging
-%exclude /usr/clearos/apps/services/tests
 %dir /usr/clearos/apps/services
 /usr/clearos/apps/services/deploy
 /usr/clearos/apps/services/language

@@ -137,14 +137,14 @@ function update_start_stop(service, state) {
     $('#r-' + service).find('td:eq(4) a:eq(0)').text(state ? lang_stop : lang_start);
     $('#r-' + service).find('td:eq(4) a:eq(0)').css('padding', '2px 7px');
     $('#r-' + service).find('td:first').html(
-        '<i class=\'theme-summary-table-entry-state theme-text-' + (state ? 'good' : 'bad') + '-status icon-off\'>' +
+        '<i class=\'theme-summary-table-entry-state theme-text-' + (state ? 'good' : 'bad') + '-status fa fa-power-off\'>' +
           '<span class=\'theme-hidden\'>' + (state ? 0 : 1) + '</span>' +
         '</i>'
     );
 }
 
 function update_boot(service, state) {
-    $('#r-' + service).find('td:eq(3)').html((state ? '<i class=\'icon-ok\'></i>' : ''));
+    $('#r-' + service).find('td:eq(3)').html((state ? '<i class=\'fa fa-check\'></i>' : ''));
     $('#r-' + service).find('td:eq(4) a:eq(1)').text(state ? lang_disable : lang_enable);
     $('#r-' + service).find('td:eq(4) a:eq(1)').css('padding', '2px 7px');
 }
