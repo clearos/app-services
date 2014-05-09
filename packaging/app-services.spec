@@ -1,7 +1,7 @@
 
 Name: app-services
 Epoch: 1
-Version: 1.5.15
+Version: 1.6.0
 Release: 1%{dist}
 Summary: Services Manager
 License: GPLv3
