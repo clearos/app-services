@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'services';
-$app['version'] = '1.6.0';
+$app['version'] = '1.6.4';
 $app['release'] = '1';
 $app['vendor'] = 'Tim Burgess';
 $app['packager'] = 'Tim Burgess';
@@ -36,6 +36,7 @@ $app['requires'] = array(
 );
 
 $app['core_requires'] = array(
+   'app-base-core >= 1:1.6.5',
 );
 
 $app['core_file_manifest'] = array(

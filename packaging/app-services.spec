@@ -1,7 +1,7 @@
 
 Name: app-services
 Epoch: 1
-Version: 1.6.0
+Version: 1.6.4
 Release: 1%{dist}
 Summary: Services Manager
 License: GPLv3
@@ -21,6 +21,7 @@ Summary: Services Manager - Core
 License: GPLv3
 Group: ClearOS/Libraries
 Requires: app-base-core
+Requires: app-base-core >= 1:1.6.5
 
 %description core
 Services Manager is used to control the system daemons and their running state and provides a useful overview. You can also control which services start up at boot time.

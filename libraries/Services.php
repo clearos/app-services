@@ -168,6 +168,8 @@ class Services extends Engine
                 $services_info[$daemon_name]['description'] = $daemon->get_title(); //details['title'];
                 $services_info[$daemon_name]['running_state'] = $daemon->get_running_state();
                 $services_info[$daemon_name]['boot_state'] = $daemon->get_boot_state();
+                $services_info[$daemon_name]['multiservice'] = $daemon->is_multiservice();
+                $services_info[$daemon_name]['url'] = $daemon->get_app_url();
             } catch (\Exception $e) {
                 continue;
             }

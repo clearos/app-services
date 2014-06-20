@@ -58,6 +58,7 @@ $anchors = array();
 
 foreach ($services as $service => $details) {
     $action = '/app/services/start_toggle/' . $service;
+
     if ($details['running_state']) {
         $anchor = anchor_custom($action, lang('base_stop'), 'important', array('id' => 'enable-' + $service));
     } else {
@@ -71,7 +72,11 @@ foreach ($services as $service => $details) {
         $bootstatus = '';
         $bootanchor = anchor_custom($action, lang('base_enable'));
     }
-    $buttons = button_set(array($anchor, $bootanchor));
+
+    if ($details['multiservice'])
+        $buttons = ""; // TODO: javascript is overwriting custom button
+    else
+        $buttons = button_set(array($anchor, $bootanchor));
 
     $item['title'] = $service;
     $item['row_id'] = $service;

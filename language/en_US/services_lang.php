@@ -7,3 +7,4 @@ $lang['services_services'] = 'Services';
 $lang['services_service'] = 'Service';
 $lang['services_description'] = 'Service Description';
 $lang['services_boot_status'] = 'Startup';
+$lang['services_go_to_app'] = 'Go to App';
