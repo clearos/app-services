@@ -73,10 +73,7 @@ foreach ($services as $service => $details) {
         $bootanchor = anchor_custom($action, lang('base_enable'));
     }
 
-    if ($details['multiservice'])
-        $buttons = ""; // TODO: javascript is overwriting custom button
-    else
-        $buttons = button_set(array($anchor, $bootanchor));
+    $buttons = button_set(array($anchor, $bootanchor));
 
     $item['title'] = $service;
     $item['row_id'] = $service;
