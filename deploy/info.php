@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'services';
-$app['version'] = '2.0.1';
+$app['version'] = '2.0.5';
 $app['release'] = '1';
 $app['vendor'] = 'Tim Burgess';
 $app['packager'] = 'Tim Burgess';
