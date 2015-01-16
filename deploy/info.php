@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'services';
-$app['version'] = '2.0.5';
+$app['version'] = '2.0.14';
 $app['release'] = '1';
 $app['vendor'] = 'Tim Burgess';
 $app['packager'] = 'Tim Burgess';
@@ -19,8 +19,7 @@ $app['description'] = lang('services_app_description');
 
 $app['name'] = lang('services_app_name');
 $app['category'] = lang('base_category_system');
-$app['subcategory'] = lang('base_subcategory_operating_system');
-$app['menu_enabled'] = TRUE;
+$app['subcategory'] = lang('base_subcategory_settings');
 
 /////////////////////////////////////////////////////////////////////////////
 // Controllers

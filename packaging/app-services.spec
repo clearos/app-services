@@ -1,9 +1,9 @@
 
 Name: app-services
 Epoch: 1
-Version: 2.0.5
+Version: 2.0.14
 Release: 1%{dist}
-Summary: Services Manager
+Summary: Services
 License: GPLv3
 Group: ClearOS/Apps
 Packager: Tim Burgess
@@ -14,17 +14,17 @@ Requires: %{name}-core = 1:%{version}-%{release}
 Requires: app-base
 
 %description
-Services Manager is used to control the system daemons and their running state and provides a useful overview. You can also control which services start up at boot time.
+The Services app is used to control the system daemons and their running state and provides a useful overview. You can also control which services start up at boot time.
 
 %package core
-Summary: Services Manager - Core
+Summary: Services - Core
 License: GPLv3
 Group: ClearOS/Libraries
 Requires: app-base-core
 Requires: app-base-core >= 1:1.6.5
 
 %description core
-Services Manager is used to control the system daemons and their running state and provides a useful overview. You can also control which services start up at boot time.
+The Services app is used to control the system daemons and their running state and provides a useful overview. You can also control which services start up at boot time.
 
 This package provides the core API and libraries.
 
