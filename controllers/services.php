@@ -77,7 +77,9 @@ class Services extends ClearOS_Controller
         // Load views
         //-----------
 
-        $this->page->view_form('services/services', $data, lang('services_services'));
+        $options['type'] = MY_Page::TYPE_WIDE_CONFIGURATION;
+
+        $this->page->view_form('services/services', $data, lang('services_services'), $options);
     }
 
     /**
