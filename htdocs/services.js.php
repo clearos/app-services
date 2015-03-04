@@ -150,4 +150,4 @@ function update_boot(service, state) {
 }
 ";
 
-// vim: syntax=php ts=4
+// vim: ts=4 syntax=javascript
