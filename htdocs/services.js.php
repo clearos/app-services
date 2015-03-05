@@ -48,6 +48,11 @@ var lang_stop = '" . lang('base_stop') . "';
 var lang_disable = '" . lang('base_disable') . "';
 var lang_enable = '" . lang('base_enable') . "';
 
+var requested_state = '';
+var requested_state_daemon = '';
+var requested_boot = '';
+var requested_boot_daemon = '';
+
 $(document).ready(function() {
     get_services();
     $('#server_services a').click(function (e) {
@@ -76,31 +81,31 @@ function get_services() {
                 });
 		    }
 
-            window.setTimeout(get_services, 10000);
+            window.setTimeout(get_services, 2000);
         },
         error: function(xhr, text, err) {
             // Don't display any errors if ajax request was aborted due to page redirect/reload
             if (xhr['abort'] == undefined)
                 clearos_dialog_box('errmsg', '" . lang('base_warning') . "', xhr.responseText.toString());
-            window.setTimeout(get_services, 10000);
+            window.setTimeout(get_services, 5000);
         }
     });
 }
 
 function toggle_start_stop(service) {
-    $('#r-' + service).find('td:eq(4) a:eq(0)').html('<span class=\'theme-loading-small\'></span>');
-    $('#r-' + service).find('td:eq(4) a:eq(0)').css('padding', '2px 7px');
+    requested_state_deamon = service;
+    requested_state = $('#' + service + '-state-button').text();
+    // FIXME: what to do with button when pressed
+    $('#' + service + '-state-button').hide();
+
     $.ajax({
         type: 'POST',
         dataType: 'json',
         url: '/app/services/start_toggle',
         data: 'ci_csrf_token=' + $.cookie('ci_csrf_token') + '&service=' + service,
         success: function(data) {
-            if (data.code != 0) {
+            if (data.code != 0)
                 clearos_dialog_box('errmsg', '" . lang('base_warning') . "', data.errmsg);
-            } else {
-                update_start_stop(service, data.running_state)
-            } 
         },
         error: function(xhr, text, err) {
             // Don't display any errors if ajax request was aborted due to page redirect/reload
@@ -111,19 +116,19 @@ function toggle_start_stop(service) {
 }
 
 function toggle_boot(service) {
-    $('#r-' + service).find('td:eq(4) a:eq(1)').html('<span class=\'theme-loading-small\'></span>');
-    $('#r-' + service).find('td:eq(4) a:eq(1)').css('padding', '2px 7px');
+    requested_boot_deamon = service;
+    requested_boot = $('#' + service + '-boot-button').text();
+    // FIXME: what to do with button when pressed
+    $('#' + service + '-boot-button').hide();
+
     $.ajax({
         type: 'POST',
         dataType: 'json',
         url: '/app/services/boot_toggle',
         data: 'ci_csrf_token=' + $.cookie('ci_csrf_token') + '&service=' + service,
         success: function(data) {
-            if (data.code != 0) {
+            if (data.code != 0)
                 clearos_dialog_box('errmsg', '" . lang('base_warning') . "', data.errmsg);
-            } else {
-                update_boot(service, data.boot_state)
-            } 
         },
         error: function(xhr, text, err) {
             // Don't display any errors if ajax request was aborted due to page redirect/reload
@@ -134,19 +139,56 @@ function toggle_boot(service) {
 }
 
 function update_start_stop(service, state) {
-    $('#r-' + service).find('td:eq(4) a:eq(0)').text(state ? lang_stop : lang_start);
-    $('#r-' + service).find('td:eq(4) a:eq(0)').css('padding', '2px 7px');
-    $('#r-' + service).find('td:first').html(
-        '<i class=\'theme-summary-table-entry-state theme-text-' + (state ? 'good' : 'bad') + '-status fa fa-power-off\'>' +
-          '<span class=\'theme-hidden\'>' + (state ? 0 : 1) + '</span>' +
-        '</i>'
-    );
+
+    // If a start/stop request has been done, look for a change in state
+    if (service == requested_state_daemon && (requested_state != '')) {
+        // A stop request has been issued, but daemon is still running.  Bail.
+        if ((requested_state == lang_stop) && state)
+            return;
+
+        // A start request has been issued, but daemon is not running.  Bail.
+        if ((requested_state == lang_start) && !state)
+            return;
+
+        requested_state = '';
+    }
+
+    // FIXME: how do we change the status icon?
+    if (state) {
+        $('#' + service + '-state-button').text(lang_stop);
+        // $('#' + service + '-state-icon').text(lang_stop);
+    } else {
+        $('#' + service + '-state-button').text(lang_start);
+    }
+
+    $('#' + service + '-state-button').show();
 }
 
 function update_boot(service, state) {
-    $('#r-' + service).find('td:eq(3)').html((state ? '<i class=\'fa fa-check\'></i>' : ''));
-    $('#r-' + service).find('td:eq(4) a:eq(1)').text(state ? lang_disable : lang_enable);
-    $('#r-' + service).find('td:eq(4) a:eq(1)').css('padding', '2px 7px');
+
+    // If a boot change request has been done, look for a change in boot status
+    if (service == requested_boot_daemon && (requested_boot != '')) {
+
+        // A start on boot request has been issued, but incomplete.  Bail.
+        if ((requested_boot == lang_enable) && !state)
+            return;
+
+        // A no start on boot request has been issued, but incomplete.  Bail.
+        if ((requested_boot == lang_disable) && state)
+            return;
+
+        requested_boot = '';
+    }
+
+    if (state) {
+        $('#' + service + '-boot-button').text(lang_disable);
+        $('#' + service + '-boot-status').show();
+    } else {
+        $('#' + service + '-boot-button').text(lang_enable);
+        $('#' + service + '-boot-status').hide();
+    }
+
+    $('#' + service + '-boot-button').show();
 }
 ";
 

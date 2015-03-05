@@ -57,23 +57,42 @@ $anchors = array();
 ///////////////////////////////////////////////////////////////////////////////
 
 foreach ($services as $service => $details) {
-    $action = '/app/services/start_toggle/' . $service;
 
-    if ($details['running_state']) {
-        $anchor = anchor_custom($action, lang('base_stop'), 'important', array('id' => 'enable-' + $service));
-    } else {
-        $anchor = anchor_custom($action, lang('base_start'), 'important', array('id' => 'enable-' + $service));
-    }
-    $action = '/app/services/boot_toggle/' . $service;
+    // State information
+    //------------------
+
+    $state_text = ($details['running_state']) ? lang('base_stop') : lang('base_start');
+    $anchor = anchor_custom(
+        '/app/services/start_toggle/' . $service,
+        $state_text,
+        'important',
+        array('id' => $service . '-state-button')
+    );
+
+
+    // Boot information
+    //-----------------
+
     if ($details['boot_state']) {
-        $bootstatus = '<i class="fa fa-check"></i>';
-        $bootanchor = anchor_custom($action, lang('base_disable'));
+        $boot_anchor_text = lang('base_disable');
     } else {
-        $bootstatus = '';
-        $bootanchor = anchor_custom($action, lang('base_enable'));
+        $boot_anchor_text = lang('base_enable');
     }
 
-    $buttons = button_set(array($anchor, $bootanchor));
+    // TODO: change boot_status to a theme function
+    $boot_status = "<span id='$service-boot-status'><i class='fa fa-check'></i></span>";
+
+    $boot_anchor = anchor_custom(
+        '/app/services/boot_toggle/' . $service,
+        $boot_anchor_text,
+        'important',
+        array('id' => $service . '-boot-button')
+    );
+
+    // Main
+    //-----
+
+    $buttons = button_set(array($anchor, $boot_anchor));
 
     $item['title'] = $service;
     $item['row_id'] = $service;
@@ -83,7 +102,7 @@ foreach ($services as $service => $details) {
     $item['details'] = array(
         $details['description'],
         $service,
-        $bootstatus
+        $boot_status
     );
 
     $items[] = $item;
