@@ -66,7 +66,7 @@ foreach ($services as $service => $details) {
         '/app/services/start_toggle/' . $service,
         $state_text,
         'important',
-        array('id' => $service . '-state-button')
+        array('id' => $service . '-state-button', 'class' => ($details['running_state'] ? 'clearos-running' : 'clearos-off'))
     );
 
 
@@ -79,14 +79,15 @@ foreach ($services as $service => $details) {
         $boot_anchor_text = lang('base_enable');
     }
 
-    // TODO: change boot_status to a theme function
-    $boot_status = "<span id='$service-boot-status'><i class='fa fa-check'></i></span>";
+    $boot_status = "<span class='clearos-boot-status'>-</span>";
+    if ($details['boot_state'])
+        $boot_status = "<span class='clearos-boot-status'><i class='fa fa-check-circle'></i></span>";
 
     $boot_anchor = anchor_custom(
         '/app/services/boot_toggle/' . $service,
         $boot_anchor_text,
         'important',
-        array('id' => $service . '-boot-button')
+        array('id' => $service . '-boot-button', 'class' => ($details['boot_state'] ? 'clearos-onboot' : 'clearos-off'))
     );
 
     // Main

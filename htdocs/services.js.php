@@ -7,7 +7,7 @@
  * @package    services
  * @subpackage javascript
  * @author     ClearFoundation <developer@clearfoundation.com>
- * @copyright  2011 ClearFoundation
+ * @copyright  2011-2015 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
  * @link       http://www.clearfoundation.com/docs/developer/apps/services/
  */
@@ -47,6 +47,7 @@ var lang_start = '" . lang('base_start') . "';
 var lang_stop = '" . lang('base_stop') . "';
 var lang_disable = '" . lang('base_disable') . "';
 var lang_enable = '" . lang('base_enable') . "';
+var lang_warning = '" . lang('base_warning') . "';
 
 var requested_state = '';
 var requested_state_daemon = '';
@@ -81,22 +82,20 @@ function get_services() {
                 });
 		    }
 
-            window.setTimeout(get_services, 2000);
+            window.setTimeout(get_services, 5000);
         },
         error: function(xhr, text, err) {
             // Don't display any errors if ajax request was aborted due to page redirect/reload
             if (xhr['abort'] == undefined)
-                clearos_dialog_box('errmsg', '" . lang('base_warning') . "', xhr.responseText.toString());
+                clearos_dialog_box('errmsg', lang_warning, xhr.responseText.toString());
             window.setTimeout(get_services, 5000);
         }
     });
 }
 
 function toggle_start_stop(service) {
-    requested_state_deamon = service;
-    requested_state = $('#' + service + '-state-button').text();
-    // FIXME: what to do with button when pressed
-    $('#' + service + '-state-button').hide();
+    $('#' + service + '-state-button').addClass('disabled');
+    $('#' + service + '-state-button').html(clearos_loading());
 
     $.ajax({
         type: 'POST',
@@ -104,22 +103,27 @@ function toggle_start_stop(service) {
         url: '/app/services/start_toggle',
         data: 'ci_csrf_token=' + $.cookie('ci_csrf_token') + '&service=' + service,
         success: function(data) {
-            if (data.code != 0)
-                clearos_dialog_box('errmsg', '" . lang('base_warning') . "', data.errmsg);
+            $('#' + service + '-state-button').removeClass('disabled');
+            if (data.code != 0) {
+                clearos_dialog_box('errmsg', lang_warning, data.errmsg);
+                return;
+            }
+            if ($('#' + service + '-state-button').hasClass('clearos-running'))
+                update_start_stop(service, true);
+            else
+                update_start_stop(service, false);
         },
         error: function(xhr, text, err) {
             // Don't display any errors if ajax request was aborted due to page redirect/reload
             if (xhr['abort'] == undefined)
-                clearos_dialog_box('errmsg', '" . lang('base_warning') . "', xhr.responseText.toString());
+                clearos_dialog_box('errmsg', lang_warning, xhr.responseText.toString());
         }
     });
 }
 
 function toggle_boot(service) {
-    requested_boot_deamon = service;
-    requested_boot = $('#' + service + '-boot-button').text();
-    // FIXME: what to do with button when pressed
-    $('#' + service + '-boot-button').hide();
+    $('#' + service + '-boot-button').addClass('disabled');
+    $('#' + service + '-boot-button').html(clearos_loading());
 
     $.ajax({
         type: 'POST',
@@ -127,68 +131,52 @@ function toggle_boot(service) {
         url: '/app/services/boot_toggle',
         data: 'ci_csrf_token=' + $.cookie('ci_csrf_token') + '&service=' + service,
         success: function(data) {
-            if (data.code != 0)
-                clearos_dialog_box('errmsg', '" . lang('base_warning') . "', data.errmsg);
+            $('#' + service + '-boot-button').removeClass('disabled');
+            if (data.code != 0) {
+                clearos_dialog_box('errmsg', lang_warning, data.errmsg);
+                return;
+            }
+            if ($('#' + service + '-boot-button').hasClass('clearos-onboot'))
+                update_boot(service, true);
+            else
+                update_boot(service, false);
         },
         error: function(xhr, text, err) {
             // Don't display any errors if ajax request was aborted due to page redirect/reload
             if (xhr['abort'] == undefined)
-                clearos_dialog_box('errmsg', '" . lang('base_warning') . "', xhr.responseText.toString());
+                clearos_dialog_box('errmsg', lang_warning, xhr.responseText.toString());
         }
     });
 }
 
 function update_start_stop(service, state) {
 
-    // If a start/stop request has been done, look for a change in state
-    if (service == requested_state_daemon && (requested_state != '')) {
-        // A stop request has been issued, but daemon is still running.  Bail.
-        if ((requested_state == lang_stop) && state)
-            return;
-
-        // A start request has been issued, but daemon is not running.  Bail.
-        if ((requested_state == lang_start) && !state)
-            return;
-
-        requested_state = '';
-    }
-
-    // FIXME: how do we change the status icon?
+    var status_icon = $('[data-row-id=\"' + service + '\"]').find('.theme-summary-table-entry-state')[0];
     if (state) {
-        $('#' + service + '-state-button').text(lang_stop);
-        // $('#' + service + '-state-icon').text(lang_stop);
+        $('#' + service + '-state-button').removeClass('clearos-running');
+        $('#' + service + '-state-button').html(lang_start);
+        $(status_icon).removeClass('theme-text-good-status');
+        $(status_icon).addClass('theme-text-bad-status');
     } else {
-        $('#' + service + '-state-button').text(lang_start);
+        $('#' + service + '-state-button').addClass('clearos-running');
+        $('#' + service + '-state-button').html(lang_stop);
+        $(status_icon).removeClass('theme-text-bad-status');
+        $(status_icon).addClass('theme-text-good-status');
     }
-
-    $('#' + service + '-state-button').show();
 }
 
 function update_boot(service, state) {
 
-    // If a boot change request has been done, look for a change in boot status
-    if (service == requested_boot_daemon && (requested_boot != '')) {
-
-        // A start on boot request has been issued, but incomplete.  Bail.
-        if ((requested_boot == lang_enable) && !state)
-            return;
-
-        // A no start on boot request has been issued, but incomplete.  Bail.
-        if ((requested_boot == lang_disable) && state)
-            return;
-
-        requested_boot = '';
-    }
-
+    var onboot_icon = $('[data-row-id=\"' + service + '\"]').find('.clearos-boot-status')[0];
     if (state) {
-        $('#' + service + '-boot-button').text(lang_disable);
-        $('#' + service + '-boot-status').show();
+        $('#' + service + '-boot-button').removeClass('clearos-onboot');
+        $('#' + service + '-boot-button').html(lang_disable);
+        $(onboot_icon).html(clearos_enabled());
     } else {
         $('#' + service + '-boot-button').text(lang_enable);
         $('#' + service + '-boot-status').hide();
+        $(onboot_icon).html(clearos_disabled());
     }
-
-    $('#' + service + '-boot-button').show();
 }
 ";
 
