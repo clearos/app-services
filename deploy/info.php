@@ -43,3 +43,6 @@ $app['core_file_manifest'] = array(
 
 $app['core_directory_manifest'] = array(
 );
+$app['delete_dependency'] = array(
+    'app-services-core'
+);
