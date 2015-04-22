@@ -94,6 +94,9 @@ function get_services() {
 }
 
 function toggle_start_stop(service) {
+    requested_state_daemon = service;
+    requested_state = $('#' + service + '-state-button').text();
+
     $('#' + service + '-state-button').addClass('disabled');
     $('#' + service + '-state-button').html(clearos_loading());
 
@@ -122,6 +125,9 @@ function toggle_start_stop(service) {
 }
 
 function toggle_boot(service) {
+    requested_boot_daemon = service;
+    requested_boot = $('#' + service + '-boot-button').text();
+
     $('#' + service + '-boot-button').addClass('disabled');
     $('#' + service + '-boot-button').html(clearos_loading());
 
@@ -150,6 +156,18 @@ function toggle_boot(service) {
 }
 
 function update_start_stop(service, state) {
+    // If a start/stop request has been done, look for a change in state
+    if (service == requested_state_daemon && (requested_state != '')) {
+        // A stop request has been issued, but daemon is still running.  Bail.
+        if ((requested_state == lang_stop) && state)
+            return;
+
+        // A start request has been issued, but daemon is not running.  Bail.
+        if ((requested_state == lang_start) && !state)
+            return;
+
+        requested_state = '';
+    }
 
     var status_icon = $('[data-row-id=\"' + service + '\"]').find('.theme-summary-table-entry-state')[0];
     if (!state) {
@@ -166,6 +184,19 @@ function update_start_stop(service, state) {
 }
 
 function update_boot(service, state) {
+
+    // If a boot change request has been done, look for a change in boot status
+    if (service == requested_boot_daemon && (requested_boot != '')) {
+        // A start on boot request has been issued, but incomplete.  Bail.
+        if ((requested_boot == lang_enable) && !state)
+            return;
+
+        // A no start on boot request has been issued, but incomplete.  Bail.
+        if ((requested_boot == lang_disable) && state)
+            return;
+
+        requested_boot = '';
+    }
 
     var onboot_icon = $('[data-row-id=\"' + service + '\"]').find('.clearos-boot-status')[0];
     if (state) {
