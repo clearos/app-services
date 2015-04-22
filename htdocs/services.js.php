@@ -152,7 +152,7 @@ function toggle_boot(service) {
 function update_start_stop(service, state) {
 
     var status_icon = $('[data-row-id=\"' + service + '\"]').find('.theme-summary-table-entry-state')[0];
-    if (state) {
+    if (!state) {
         $('#' + service + '-state-button').removeClass('clearos-running');
         $('#' + service + '-state-button').html(lang_start);
         $(status_icon).removeClass('theme-text-good-status');
