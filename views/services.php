@@ -50,7 +50,14 @@ $headers = array(
 // Anchors
 ///////////////////////////////////////////////////////////////////////////////
 
-$anchors = array();
+if ($form_type == MY_Page::TYPE_CONFIGURATION)
+    $anchors = array(
+        anchor_custom('/app/services/index/' . MY_Page::TYPE_WIDE_CONFIGURATION, lang('base_detailed_view'))
+    );
+else
+    $anchors = array(
+        anchor_custom('/app/services', lang('base_default'))
+    );
 
 ///////////////////////////////////////////////////////////////////////////////
 // Items
@@ -118,7 +125,8 @@ $options = array (
     'default_rows' => 1000,
     'paginate' => FALSE,
     'sort-default-col' => 1,
-    'row-enable-disable' => TRUE
+    'row-enable-disable' => TRUE,
+    'responsive' => ($form_type == MY_Page::TYPE_CONFIGURATION ? array(0 => 'none') : NULL)
 );
 
 echo summary_table(

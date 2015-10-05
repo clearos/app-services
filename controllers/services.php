@@ -51,10 +51,11 @@ class Services extends ClearOS_Controller
     /**
      * Default daemon controller.
      *
+     * @param $type String type of view
      * @return view
      */
 
-    function index()
+    function index($type = MY_Page::TYPE_CONFIGURATION)
     {
         clearos_profile(__METHOD__, __LINE__);
 
@@ -77,7 +78,9 @@ class Services extends ClearOS_Controller
         // Load views
         //-----------
 
-        $options['type'] = MY_Page::TYPE_WIDE_CONFIGURATION;
+        $options['type'] = $type;
+
+        $data['form_type'] = $type;
 
         $this->page->view_form('services/services', $data, lang('services_services'), $options);
     }
