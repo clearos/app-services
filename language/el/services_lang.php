@@ -1,8 +1,8 @@
 <?php
 
-$lang['services_app_description'] = ' ';
-$lang['services_app_name'] = 'Services';
-$lang['services_boot_status'] = 'Startup';
-$lang['services_description'] = 'Service Description';
-$lang['services_service'] = 'Service';
-$lang['services_services'] = 'Services';
+$lang['services_app_description'] = 'Η εφαρμογή Υπηρεσίες χρησιμοποιείται για τον έλεγχο των δαιμόνων του συστήματος και την κατάσταση λειτουργίας τους και παρέχει μια χρήσιμη επισκόπηση. Μπορείτε επίσης να ελέγξετε ποιες υπηρεσίες εκκίνηση κατά την εκκίνηση.';
+$lang['services_app_name'] = 'Υπηρεσίες';
+$lang['services_boot_status'] = 'Ξεκίνα';
+$lang['services_description'] = 'Περιγραφή υπηρεσίας';
+$lang['services_service'] = 'Υπηρεσία';
+$lang['services_services'] = 'Υπηρεσίες';
