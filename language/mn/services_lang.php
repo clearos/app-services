@@ -1,8 +1,8 @@
 <?php
 
-$lang['services_app_description'] = ' ';
-$lang['services_app_name'] = 'Services';
+$lang['services_app_description'] = 'Үйлчилгээ апп системийн дэмонуудыг, тэдний ажиллаж байгаа байдлыг хянах ашиглаж, ашигтай тоймыг байна. Та мөн үйлчилгээ ачаалах үед эхлүүлэх нь хянаж болно.';
+$lang['services_app_name'] = 'үйлчилгээ';
 $lang['services_boot_status'] = 'Startup';
-$lang['services_description'] = 'Service Description';
-$lang['services_service'] = 'Service';
-$lang['services_services'] = 'Services';
+$lang['services_description'] = 'үйлчилгээний танилцуулга';
+$lang['services_service'] = 'үйлчилгээ';
+$lang['services_services'] = 'үйлчилгээ';
