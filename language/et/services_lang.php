@@ -1,8 +1,8 @@
 <?php
 
-$lang['services_app_description'] = ' ';
-$lang['services_app_name'] = 'Services';
+$lang['services_app_description'] = 'Teenused app kasutatakse kontrolli süsteemi deemoneid ja nende jooksvad riigi ja annab kasuliku ülevaate. Samuti saab kontrollida, millised teenused käivitu alglaadimise ajal.';
+$lang['services_app_name'] = 'teenused';
 $lang['services_boot_status'] = 'Startup';
-$lang['services_description'] = 'Service Description';
-$lang['services_service'] = 'Service';
-$lang['services_services'] = 'Services';
+$lang['services_description'] = 'Teenuse kirjeldus';
+$lang['services_service'] = 'teenus';
+$lang['services_services'] = 'teenused';
