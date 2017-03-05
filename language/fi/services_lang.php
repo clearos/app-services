@@ -1,8 +1,8 @@
 <?php
 
-$lang['services_app_description'] = ' ';
-$lang['services_app_name'] = 'Services';
-$lang['services_boot_status'] = 'Startup';
-$lang['services_description'] = 'Service Description';
-$lang['services_service'] = 'Service';
-$lang['services_services'] = 'Services';
+$lang['services_app_description'] = 'Services-sovellus käyttää ohjaamaan demoniohjelmien ja niiden pyörivää tilaa ja antaa hyödyllisen katsauksen. Voit myös mitkä palvelut käynnistyy käynnistyksen aikana.';
+$lang['services_app_name'] = 'Palvelut';
+$lang['services_boot_status'] = 'Aloittaa';
+$lang['services_description'] = 'palvelun kuvaus';
+$lang['services_service'] = 'palvelu';
+$lang['services_services'] = 'Palvelut';
