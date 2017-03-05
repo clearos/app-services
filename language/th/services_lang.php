@@ -1,8 +1,8 @@
 <?php
 
-$lang['services_app_description'] = ' ';
-$lang['services_app_name'] = 'Services';
-$lang['services_boot_status'] = 'Startup';
-$lang['services_description'] = 'Service Description';
-$lang['services_service'] = 'Service';
-$lang['services_services'] = 'Services';
+$lang['services_app_description'] = 'แอปพลิเคบริการจะใช้ในการควบคุมระบบภูตและรัฐทำงานของพวกเขาและให้ภาพรวมที่มีประโยชน์ นอกจากนี้คุณยังสามารถควบคุมการให้บริการเริ่มต้นขึ้นในเวลาบูต';
+$lang['services_app_name'] = 'บริการ';
+$lang['services_boot_status'] = 'การเริ่มต้น';
+$lang['services_description'] = 'รายละเอียดการบริการ';
+$lang['services_service'] = 'บริการ';
+$lang['services_services'] = 'บริการ';
