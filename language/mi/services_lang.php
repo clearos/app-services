@@ -1,8 +1,8 @@
 <?php
 
-$lang['services_app_description'] = 'whakamahia te taupānga Ratonga te ki te whakahaere i te daemons pūnaha me to ratou ahua rere, me te whakarato i tētahi tirohanga whai hua. Ka taea hoki te whakahaere e tīmata ake ratonga i te wā whawhai.';
-$lang['services_app_name'] = 'ratonga';
-$lang['services_boot_status'] = 'whakaoho';
-$lang['services_description'] = 'Whakaahuatanga ratonga';
-$lang['services_service'] = 'ratonga';
-$lang['services_services'] = 'ratonga';
+$lang['services_app_description'] = 'Ka whakamahia te taupānga Ratonga ki te whakahaere i nga taemons pünaha me to ratau whakahaere me te whakarato i te tirohanga pai. Ka taea hoki e koe te whakahaere i nga ratonga ka timata i te waa whawhai.';
+$lang['services_app_name'] = 'Ratonga';
+$lang['services_boot_status'] = 'Tīmata';
+$lang['services_description'] = 'Whakaahuatanga Ratonga';
+$lang['services_service'] = 'Ratonga';
+$lang['services_services'] = 'Ratonga';
