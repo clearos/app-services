@@ -1,8 +1,8 @@
 <?php
 
-$lang['services_app_description'] = 'Aplikasi Services digunakan untuk mengawal daemon sistem dan negeri mereka berjalan dan memberikan gambaran yang berguna. Anda juga boleh mengawal mana perkhidmatan bermula semasa but.';
-$lang['services_app_name'] = 'perkhidmatan';
+$lang['services_app_description'] = 'Aplikasi Perkhidmatan digunakan untuk mengawal daemon sistem dan keadaan berjalannya dan menyediakan gambaran umum yang berguna. Anda juga boleh mengawal perkhidmatan mana yang bermula pada masa boot.';
+$lang['services_app_name'] = 'Perkhidmatan';
 $lang['services_boot_status'] = 'Memulakan';
-$lang['services_description'] = 'Penerangan perkhidmatan';
-$lang['services_service'] = 'perkhidmatan';
-$lang['services_services'] = 'perkhidmatan';
+$lang['services_description'] = 'Penerangan Perkhidmatan';
+$lang['services_service'] = 'Perkhidmatan';
+$lang['services_services'] = 'Perkhidmatan';
