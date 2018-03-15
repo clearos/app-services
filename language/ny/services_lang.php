@@ -1,8 +1,8 @@
 <?php
 
-$lang['services_app_description'] = 'The Services app ntchito kulamulira daemons dongosolo ndi boma kwawo ndipo amapereka mwachidule zothandiza. Mukhoza kulamulira amene oyang&#39;anira kuyamba pa jombo nthawi.';
-$lang['services_app_name'] = 'Services';
+$lang['services_app_description'] = 'Pulogalamu yamagwiritsidwe ntchito imagwiritsidwa ntchito poyang&#39;anira ma demem system ndi kayendetsedwe kawo ndipo imapereka mwachidule. Mukhozanso kuyang&#39;anira ntchito zomwe zimayambira pa nthawi yoyambira.';
+$lang['services_app_name'] = 'Mapulogalamu';
 $lang['services_boot_status'] = 'Yambitsani';
-$lang['services_description'] = 'Kufotokozera Service';
-$lang['services_service'] = 'Service';
-$lang['services_services'] = 'Services';
+$lang['services_description'] = 'Ndondomeko ya Utumiki';
+$lang['services_service'] = 'Utumiki';
+$lang['services_services'] = 'Mapulogalamu';
