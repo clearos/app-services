@@ -1,6 +1,6 @@
 <?php
 
-$lang['services_app_description'] = 'Aplikácia Services sa používa na ovládanie systému démonmi a ich zapnutého stavu a poskytuje užitočný prehľad. Môžete tiež určiť, ktoré služby spustenie pri štarte systému.';
+$lang['services_app_description'] = 'Aplikácia Služby slúži na ovládanie systémových démonov a ich prevádzkový stav a poskytuje užitočný prehľad. Môžete tiež riadiť, ktoré služby sa začnú pri zavádzaní.';
 $lang['services_app_name'] = 'služby';
 $lang['services_boot_status'] = 'Začiatok';
 $lang['services_description'] = 'Popis služby';
