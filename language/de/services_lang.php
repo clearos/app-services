@@ -1,6 +1,6 @@
 <?php
 
-$lang['services_app_description'] = 'Die Dienste App wird verwendet, um die System-Daemons und ihre Laufzustand zu steuern und bietet einen nützlichen Überblick. Sie können auch festlegen, welche Dienste beim Booten starten.';
+$lang['services_app_description'] = 'Die App "Dienste" wird verwendet, um die Systemdämonen und deren Ausführungsstatus zu steuern und bietet einen nützlichen Überblick. Sie können auch steuern, welche Dienste beim Systemstart gestartet werden.';
 $lang['services_app_name'] = 'Dienstleistungen';
 $lang['services_boot_status'] = 'Anfang';
 $lang['services_description'] = 'Leistungsbeschreibung';
