@@ -1,8 +1,8 @@
 <?php
 
-$lang['services_app_description'] = 'Awọn Iṣẹ app wa ni lo lati šakoso awọn eto daemons ati awọn won yen ipinle ati ki o pese a wulo Akopọ. O tun le sakoso eyi ti awọn iṣẹ bẹrẹ soke ni bata akoko.';
-$lang['services_app_name'] = 'awọn iṣẹ';
+$lang['services_app_description'] = 'Awọn Ohun elo Iṣe-iṣẹ ni a lo lati ṣe akoso awọn eto daemons ati ipo ti nṣiṣẹ wọn ati lati pese akojọpọ ti o wulo. O tun le ṣakoso awọn iṣẹ ti bẹrẹ ni akoko asiko.';
+$lang['services_app_name'] = 'Awọn iṣẹ';
 $lang['services_boot_status'] = 'Ibẹrẹ';
-$lang['services_description'] = 'Service Apejuwe';
-$lang['services_service'] = 'Service';
-$lang['services_services'] = 'awọn iṣẹ';
+$lang['services_description'] = 'Ifihan Iṣẹ';
+$lang['services_service'] = 'Iṣẹ';
+$lang['services_services'] = 'Awọn iṣẹ';
