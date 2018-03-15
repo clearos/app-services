@@ -1,8 +1,8 @@
 <?php
 
-$lang['services_app_description'] = 'Aplikacija storitve se uporablja za nadzor sistemskih demone in njihovo tekoče stanje in zagotavlja koristen pregled. Prav tako lahko nadzorujete, katere storitve zažene ob zagonu.';
-$lang['services_app_name'] = 'storitve';
+$lang['services_app_description'] = 'Aplikacija Storitve se uporablja za nadzor nad sistemskimi demoni in njihovim delovanjem in zagotavlja uporaben pregled. Lahko tudi nadzorujete, katere storitve se zaganjajo ob zagonu.';
+$lang['services_app_name'] = 'Storitve';
 $lang['services_boot_status'] = 'Začeti';
 $lang['services_description'] = 'Opis storitve';
-$lang['services_service'] = 'Service';
-$lang['services_services'] = 'storitve';
+$lang['services_service'] = 'Storitev';
+$lang['services_services'] = 'Storitve';
