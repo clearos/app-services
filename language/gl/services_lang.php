@@ -1,8 +1,8 @@
 <?php
 
-$lang['services_app_description'] = 'A aplicación Servizos úsase para controlar os daemons do sistema e do seu estado de funcionamento e ofrece unha visión útil. Tamén pode controlar cales servizos iniciar no momento da inicialización.';
-$lang['services_app_name'] = 'servizos';
+$lang['services_app_description'] = 'A aplicación Servizos úsase para controlar os demos do sistema e o seu estado en execución e proporciona unha visión xeral útil. Tamén podes controlar os servizos que se inician ao arranque.';
+$lang['services_app_name'] = 'Servizos';
 $lang['services_boot_status'] = 'Posta en marcha';
 $lang['services_description'] = 'Descrición do servizo';
-$lang['services_service'] = 'servizo';
-$lang['services_services'] = 'servizos';
+$lang['services_service'] = 'Servizo';
+$lang['services_services'] = 'Servizos';
