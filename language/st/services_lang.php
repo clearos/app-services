@@ -1,8 +1,8 @@
 <?php
 
-$lang['services_app_description'] = 'The Services app e sebelisetsoa ho laola daemons tsamaiso le boemong ba bona ba ho matha &#39;me e fana ka tjhebokakaretso e metle. U ka boela laola e leng ditshebeletso qala tsoha ka dia boot nako.';
-$lang['services_app_name'] = 'Services';
+$lang['services_app_description'] = 'Lenaneo la Litšebeletso le sebelisoa ho laola maemo a tsamaiso le boemo ba bona ba ho sebetsa &#39;me e fana ka pono e hlakileng ea bohlokoa. O ka boela oa laola hore na litšebeletso li qala neng ka nako ea boot.';
+$lang['services_app_name'] = 'Litšebeletso';
 $lang['services_boot_status'] = 'E qalang';
-$lang['services_description'] = 'Tlhaloso Service';
-$lang['services_service'] = 'Service';
-$lang['services_services'] = 'Services';
+$lang['services_description'] = 'Tlhaloso ea tšebeletso';
+$lang['services_service'] = 'Tšebeletso';
+$lang['services_services'] = 'Litšebeletso';
