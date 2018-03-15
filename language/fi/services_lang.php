@@ -1,6 +1,6 @@
 <?php
 
-$lang['services_app_description'] = 'Services-sovellus käyttää ohjaamaan demoniohjelmien ja niiden pyörivää tilaa ja antaa hyödyllisen katsauksen. Voit myös mitkä palvelut käynnistyy käynnistyksen aikana.';
+$lang['services_app_description'] = 'Palvelut-sovellusta käytetään hallitsemaan järjestelmän demonit ja niiden käynnissä oleva tila ja tarjoavat hyödyllisen yleiskuvan. Voit myös valita, mitä palveluja käynnistetään käynnistyksen yhteydessä.';
 $lang['services_app_name'] = 'Palvelut';
 $lang['services_boot_status'] = 'Aloittaa';
 $lang['services_description'] = 'palvelun kuvaus';
