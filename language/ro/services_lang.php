@@ -1,6 +1,6 @@
 <?php
 
-$lang['services_app_description'] = 'App Services este folosit pentru a controla daemon sistem și starea lor de funcționare și oferă o privire de ansamblu utilă. De asemenea, puteți controla care serviciile de pornire în momentul pornirii.';
+$lang['services_app_description'] = 'Aplicația Services este utilizată pentru a controla daemoanele de sistem și starea lor de funcționare și oferă o imagine de ansamblu utilă. De asemenea, puteți controla ce servicii pornesc la momentul încărcării.';
 $lang['services_app_name'] = 'Servicii';
 $lang['services_boot_status'] = 'Lansare';
 $lang['services_description'] = 'descrierea serviciului';
