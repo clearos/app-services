@@ -1,8 +1,8 @@
 <?php
 
-$lang['services_app_description'] = 'Үйлчилгээ апп системийн дэмонуудыг, тэдний ажиллаж байгаа байдлыг хянах ашиглаж, ашигтай тоймыг байна. Та мөн үйлчилгээ ачаалах үед эхлүүлэх нь хянаж болно.';
-$lang['services_app_name'] = 'үйлчилгээ';
-$lang['services_boot_status'] = 'Startup';
-$lang['services_description'] = 'үйлчилгээний танилцуулга';
-$lang['services_service'] = 'үйлчилгээ';
-$lang['services_services'] = 'үйлчилгээ';
+$lang['services_app_description'] = 'Үйлчилгээний програм нь системийн дэмонууд болон тэдгээрийн ажиллаж байгаа төлвийг хянахад хэрэглэгддэг бөгөөд ашигтай мэдээллээр хангадаг. Та мөн аль үйлчилгээг ачаалах үед эхлүүлэхийг бас хянах боломжтой.';
+$lang['services_app_name'] = 'Үйлчилгээ';
+$lang['services_boot_status'] = 'Эхлэл';
+$lang['services_description'] = 'Үйлчилгээний тодорхойлолт';
+$lang['services_service'] = 'Үйлчилгээ';
+$lang['services_services'] = 'Үйлчилгээ';
